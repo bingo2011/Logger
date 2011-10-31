@@ -1,6 +1,7 @@
 #ifndef LOG_H_
 #define LOG_H_
-
+#include <iostream>
+#include <stdint.h>
 enum LogLevel {
   LOG_NONE           = 0x00000000, // no logging
 

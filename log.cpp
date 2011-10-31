@@ -6,10 +6,17 @@
 typedef std::list<std::pair <std::string, LogComponent *> > ComponentList;
 typedef std::list<std::pair <std::string, LogComponent *> >::iterator ComponentListI;
 
+static 
+ComponentList *GetComponentList (void)
+{
+  static ComponentList components;
+  return &components;
+}
+
 LogComponent::LogComponent (char const * name)
   : m_levels (0), m_name (name)
 {
-  EnvVarCheck (name);
+  //EnvVarCheck (name);
 
   ComponentList *components = GetComponentList ();
   for (ComponentListI i = components->begin ();
