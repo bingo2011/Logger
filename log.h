@@ -34,6 +34,41 @@ enum LogLevel {
 #define LOG_COMPONENT_DEFINE(name)                           \
   static LogComponent g_log = LogComponent (name)
 
+#define LOG_APPEND_TIME_PREFIX                               \
+
+#define LOG_APPEND_NODE_PREFIX                               \
+
+#define LOG_APPEND_FUNC_PREFIX                               \
+
+#define LOG_APPEND_FUNC_PREFIX                               \
+
+
+
+#define LOG(level, msg)                                      \
+  do                                                            \
+    {                                                           \
+      if (g_log.IsEnabled (level))                              \
+        {                                                       \
+          LOG_APPEND_TIME_PREFIX;                            \
+          LOG_APPEND_NODE_PREFIX;                            \
+          LOG_APPEND_CONTEXT;                                \
+          LOG_APPEND_FUNC_PREFIX;                            \
+          std::clog << msg << std::endl;                        \
+        }                                                       \
+    }                                                           \
+  while (false)
+
+#define LOG_ERROR(msg) \
+  NS_LOG (LOG_ERROR, msg)
+
+#define LOG_WARN(msg) \
+  NS_LOG (LOG_WARN, msg)
+
+#define LOG_DEBUG(msg) \
+  NS_LOG (LOG_DEBUG, msg)
+
+#define LOG_INFO(msg) \
+  NS_LOG (LOG_INFO, msg)
 
 #ifdef LOG_ENABLE
 
